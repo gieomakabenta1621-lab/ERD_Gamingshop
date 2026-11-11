@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Register | ERD Shop{% endblock %}{% block content %}<div class="auth"><div class="authside"><span class="eyebrow">JOIN THE COMMUNITY</span><h2>Your setup.<br><em>Your rules.</em></h2><p>Create an account and shop your next upgrade.</p></div><div class="authform"><span class="eyebrow">NEW PLAYER</span><h1>Register</h1><form method="post">{% csrf_token %}{% for field in form %}<label>{{ field.label }}{{ field }}{% for error in field.errors %}<small class="error">{{ error }}</small>{% endfor %}</label>{% endfor %}<button class="primary full">Create account →</button></form><p>Already a player? <a href="{% url 'login' %}">Login</a></p></div></div>{% endblock %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+
+    <button type="submit">Login</button>
+</form>
